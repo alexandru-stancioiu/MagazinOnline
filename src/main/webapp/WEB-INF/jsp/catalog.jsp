@@ -14,7 +14,7 @@
 <body>
     <h1>Catalog</h1>
 
-    <table>
+    <table style="text-align: center">
         <tbody>
         <tr>
             <th>ID</th>

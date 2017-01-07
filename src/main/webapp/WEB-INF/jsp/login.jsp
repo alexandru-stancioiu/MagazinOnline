@@ -12,7 +12,7 @@
 </head>
 <body>
     <form method="post" action="/do_login">
-    <table border="1" width="30%" cellpadding="3">
+    <table border="1" width="30%" cellpadding="3" style="text-align: center">
         <thead>
         <tr>
             <th colspan="2">Login</th>

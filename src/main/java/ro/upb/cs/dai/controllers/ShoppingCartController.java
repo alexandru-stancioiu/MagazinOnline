@@ -1,6 +1,7 @@
 package ro.upb.cs.dai.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,7 @@ import ro.upb.cs.dai.model.ShoppingCart;
 import ro.upb.cs.dai.service.ProductService;
 import ro.upb.cs.dai.service.ShoppingCartService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -40,6 +42,20 @@ public class ShoppingCartController {
             return new ModelAndView("index", "products", products);
         }
 
+        return new ModelAndView("login");
+    }
+
+    @RequestMapping("/submit_shopping_cart")
+    public ModelAndView submitShoppingCart(HttpServletRequest request, HttpSession httpSession) {
+        if (httpSession.getAttribute("logged") != null &&
+                httpSession.getAttribute("logged").equals(true)) {
+
+            String[] desiredProducts = request.getParameterValues("id");
+            String[] desiredQuantities = request.getParameterValues("quantity");
+
+            List<Product> products = productService.getAllProducts();
+            return new ModelAndView("index", "products", products);
+        }
         return new ModelAndView("login");
     }
 }

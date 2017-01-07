@@ -37,7 +37,7 @@ public class ShoppingCart {
     public void updateTotalPrice() {
         totalPrice = 0.0f;
         for (Map.Entry<Product, Pair<Integer, Float>> entry : productToRequestedQuantityAndPrice.entrySet()) {
-            totalPrice += entry.getValue().getSecond();
+            totalPrice += entry.getValue().getFirst() * entry.getValue().getSecond();
         }
     }
 }

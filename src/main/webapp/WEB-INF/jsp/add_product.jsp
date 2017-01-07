@@ -13,7 +13,7 @@
 <body>
 <h1>Add new product to catalog !</h1>
 <form action="/do_add_product">
-    <table border="1" width="30%" cellpadding="3">
+    <table border="1" width="30%" cellpadding="3" style="text-align: center">
         <thead>
         <tr>
             <th colspan="2">Product</th>
