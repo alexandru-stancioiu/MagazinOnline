@@ -66,4 +66,28 @@ public class Product {
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (!id.equals(product.id)) return false;
+        if (!productName.equals(product.productName)) return false;
+        if (description != null ? !description.equals(product.description) : product.description != null) return false;
+        if (!price.equals(product.price)) return false;
+        return quantity.equals(product.quantity);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + productName.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + price.hashCode();
+        result = 31 * result + quantity.hashCode();
+        return result;
+    }
 }

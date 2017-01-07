@@ -38,9 +38,12 @@ public class ShoppingCartService {
         Product product = productDao.findProductById(productId);
         Float price = product.getPrice() * desiredQuantity;
 
-        Map<Product, Pair<Integer, Float>> productToRequestQuantityAndPrice = shoppingCart.getProductToRequestedQuantityAndPrice();
-        if (productToRequestQuantityAndPrice.containsKey(product)) {
-            //Product existingProduct = productToRequestQuantityAndPrice.get(product).g;
+        Map<Product, Pair<Integer, Float>> productToRequestedQuantityAndPrice = shoppingCart.getProductToRequestedQuantityAndPrice();
+        if (productToRequestedQuantityAndPrice.containsKey(product)) {
+            Pair<Integer, Float> existingQuantityAndPrice = productToRequestedQuantityAndPrice.get(product);
+            productToRequestedQuantityAndPrice.remove(product);
+            desiredQuantity = desiredQuantity + existingQuantityAndPrice.getFirst();
+            price = desiredQuantity * product.getPrice();
         }
 
         shoppingCart.getProductToRequestedQuantityAndPrice().put(product, new Pair<>(desiredQuantity, price));
