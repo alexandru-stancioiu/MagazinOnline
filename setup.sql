@@ -1,5 +1,7 @@
 create database if not exists store;
 
+use store;
+
 drop table if exists user;
 drop table if exists product;
 
