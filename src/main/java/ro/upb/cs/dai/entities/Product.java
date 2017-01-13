@@ -25,7 +25,7 @@ public class Product {
     private Float price;
 
     @Column(name = "quantity")
-    private String quantity;
+    private Integer quantity;
 
     public Integer getId() {
         return id;
@@ -59,11 +59,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

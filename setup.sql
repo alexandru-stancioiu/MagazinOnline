@@ -2,6 +2,8 @@ create database if not exists store;
 
 use store;
 
+drop table if exists order_items;
+drop table if exists orders;
 drop table if exists user;
 drop table if exists product;
 
@@ -22,6 +24,27 @@ description varchar(200),
 price float(5, 2) NOT NULL,
 quantity int NOT NULL,
 PRIMARY KEY (id)
+);
+
+create table orders
+(
+id int NOT NULL AUTO_INCREMENT,
+user_id int NOT NULL,
+timestamp datetime NOT NULL,
+total_price float(5, 2) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+create table order_items
+(
+id int NOT NULL AUTO_INCREMENT,
+order_id int NOT NULL,
+product_id int NOT NULL,
+quantity int NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY(order_id) REFERENCES orders(id),
+FOREIGN KEY(product_id) REFERENCES product(id) 
 );
 
 insert into user values (1, "admin", "admin", 'ADMIN');

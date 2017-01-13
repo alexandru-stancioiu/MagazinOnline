@@ -34,11 +34,12 @@ public class LoginController {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
-    private Map<String, Object> getModel(HttpSession httpSession) {
+    public Map<String, Object> getModel(HttpSession httpSession) {
         List<Product> products = productService.getAllProducts();
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCart(httpSession);
 
         Map<String, Object> model = new HashMap<>();
+        model.put("role", (String) httpSession.getAttribute("role").toString());
         model.put("products", products);
         model.put("shoppingCart", shoppingCart);
 
@@ -62,6 +63,7 @@ public class LoginController {
         if (user != null) {
             httpSession.setAttribute("logged", true);
             httpSession.setAttribute("role", user.getRole());
+            httpSession.setAttribute("user", user);
 
             Map<String, Object> model = getModel(httpSession);
             return new ModelAndView("index", model);

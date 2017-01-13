@@ -43,6 +43,6 @@
     </table>
 </form>
 <a href="/catalog">Return to Catalog</a>
-
+<a href="/logout">Logout</a>
 </body>
 </html>

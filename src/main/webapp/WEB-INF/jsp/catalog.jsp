@@ -56,5 +56,7 @@
     </table>
 
     <a href="/add_product">Add new product to catalog</a>
+    <a href="/">Return to main page</a>
+    <a href="/logout">Logout</a>
 </body>
 </html>

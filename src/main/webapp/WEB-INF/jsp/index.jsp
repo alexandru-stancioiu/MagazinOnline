@@ -88,6 +88,10 @@
             </tbody>
     </table>
     </form>
-
+    <a href="/view_orders">View previous orders</a>
+    <c:if test="${role == 'ADMIN'}">
+        <c:out value="<a href=&quot;/catalog&quot;>Administer catalog</a> " escapeXml="false" />
+    </c:if>
+    <a href="/logout">Logout</a>
 </body>
 </html>
